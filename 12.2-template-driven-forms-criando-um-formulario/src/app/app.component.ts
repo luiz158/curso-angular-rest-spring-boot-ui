@@ -24,11 +24,11 @@ export class AppComponent {
    ];
 
   salvar(form: NgForm) {
-    console.log(form);
+    console.log(form.value);
     // this.cliente.nome = form.value.nome;
     // this.cliente.email = form.value.email;
     // this.cliente.profissao = form.value.profissao;
-    
+    form.reset({profissao: ''});
   }
 
 }
