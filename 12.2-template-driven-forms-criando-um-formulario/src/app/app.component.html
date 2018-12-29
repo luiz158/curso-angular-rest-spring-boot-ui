@@ -1,6 +1,10 @@
 <div class="container">
 
   
+  <!-- <div *ngIf="usuarioForm.invalid && usuarioForm.submitted" class="alert alert-danger">
+    Preencha todos os campos corretamente
+  </div> -->
+
   <div *ngIf="usuarioForm.invalid" class="alert alert-danger">
     Preencha todos os campos corretamente
   </div>
@@ -10,16 +14,16 @@
       <label class="form-control-label">Nome</label>
       <input type="text" class="form-control" name="nome" [(ngModel)]="cliente.nome" required minlength="10"  #nome="ngModel">
 
-      <div *ngIf="nome.hasError('required')" style="color: red">Informe um nome.</div>
-      <div *ngIf="nome.hasError('minlength')" style="color: red">O nome deve ser completo.</div>
+      <div *ngIf="nome.hasError('required') && nome.touched" style="color: red">Informe um nome.</div>
+      <div *ngIf="nome.hasError('minlength') && nome.dirty" style="color: red">O nome deve ser completo.</div>
     </div>
 
     <div class="form-group">
       <label class="form-control-label">E-mail</label>
       <input type="text" class="form-control" name="email" [(ngModel)]="cliente.email" required email #email="ngModel">
 
-      <div *ngIf="email.hasError('required')" style="color: red">Informe um e-email.</div>
-      <div *ngIf="email.hasError('email')" style="color: red">Informe um e-email valido.</div>
+      <div *ngIf="email.hasError('required') && email.touched" style="color: red">Informe um e-email.</div>
+      <div *ngIf="email.hasError('email') && email.dirty" style="color: red">Informe um e-email valido.</div>
     </div>
 
     <div class="form-group">
@@ -30,10 +34,10 @@
         
       </select>
 
-      <div *ngIf="profissao.hasError('required')" style="color: red">Informe uma profissão.</div>
+      <div *ngIf="profissao.hasError('required') && profissao.touched" style="color: red">Informe uma profissão.</div>
     </div>
 
-    <button [disabled]="!usuarioForm.valid" type="submit" class="btn btn-primary">Salvar</button>
+    <button [disabled]="!usuarioForm.valid"  type="submit" class="btn btn-primary">Salvar</button>
   </form>
 
 </div>
