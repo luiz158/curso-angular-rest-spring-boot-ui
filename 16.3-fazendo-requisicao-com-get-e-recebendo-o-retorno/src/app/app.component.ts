@@ -13,7 +13,7 @@ export class AppComponent implements OnInit {
   constructor(private cidadeService: CidadeService) {}
 
   ngOnInit() {
-    this.cidadeService.consultar().then(cidades => { this.cidades = cidades; })
+    this.cidadeService.consultar().then(retornoDoMetodoDoService => { this.cidades = retornoDoMetodoDoService; })
   }
 
   adicionar(nome: string) {
